@@ -7,5 +7,12 @@ services:
     working_dir: /app
     volumes:
       - .:/app
-    command: python app.py
+      - ~/.aws:/root/.aws
+    command: sh -c "pip install boto3 watchtower && python app.py"
+    environment:
+      LOGSTASH_HOST: "elk.tekbay.click"
+      LOGSTASH_PORT: "5044"
+      AWS_REGION: "us-east-1"
+      CW_LOG_GROUP: "demo-app-logs"
+      CW_LOG_STREAM: "lab-stream"
     restart: unless-stopped
