@@ -25,7 +25,7 @@ class JsonFormatter(logging.Formatter):
         return json.dumps({
             "timestamp": datetime.utcnow().isoformat(),
             "level": record.levelname,
-            "service": "demo-app",
+            "service": "yaman",
             "message": record.getMessage()
         })
 
@@ -62,4 +62,4 @@ while True:
     else:
         logger.info(f"Action success: {action}")
 
-    time.sleep(1)
+    time.sleep(10)
